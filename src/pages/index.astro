@@ -1,0 +1,390 @@
+---
+import Analytics from '@vercel/analytics/astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="9CH Ltd — the trading name behind Rick the Handyman and AI Actually." />
+    <title>9CH Ltd</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="9CH Ltd" />
+    <meta property="og:description" content="9CH Ltd — the trading name behind Rick the Handyman and AI Actually." />
+    <meta property="og:locale" content="en_GB" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="bg-grid"></div>
+
+      <main class="content">
+        <div class="logo animate-up">
+          <span class="logo__mark">9CH</span>
+          <span class="logo__suffix">Ltd</span>
+        </div>
+
+        <p class="intro animate-up delay-1">
+          9CH Ltd is the trading name behind two brands:
+        </p>
+
+        <div class="brands">
+          <a href="https://rickfix.co.uk" class="brand-card brand-card--purple animate-up delay-2" target="_blank" rel="noopener noreferrer">
+            <div class="brand-card__accent"></div>
+            <h2 class="brand-card__name">Rick the Handyman</h2>
+            <p class="brand-card__desc">Handyman and tech support services for Sudbury and surrounding areas.</p>
+            <span class="brand-card__link">
+              rickfix.co.uk
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </span>
+          </a>
+
+          <div class="brand-card brand-card--teal animate-up delay-3">
+            <div class="brand-card__accent"></div>
+            <h2 class="brand-card__name">AI Actually</h2>
+            <p class="brand-card__desc">Coming soon.</p>
+          </div>
+        </div>
+
+        <div class="contact animate-up delay-4">
+          <span class="contact__label">Get in touch</span>
+          <a href="mailto:9chltd@proton.me" class="contact__email">9chltd@proton.me</a>
+        </div>
+      </main>
+
+      <footer class="footer animate-up delay-5">
+        <p>&copy; {new Date().getFullYear()} 9CH Ltd. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <style>
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --ink: #1a1714;
+        --ink-light: #2a2520;
+        --surface: #f5f0eb;
+        --surface-warm: #ebe4db;
+
+        --purple: #5b3a8c;
+        --purple-bright: #7b52b8;
+        --purple-deep: #472d6e;
+
+        --teal: #7a9e7e;
+        --teal-bright: #8fb893;
+        --teal-deep: #5c7e5f;
+
+        --white: #ffffff;
+        --cream: #faf8f5;
+        --stone-200: #e5dfd8;
+        --stone-300: #d4cbc1;
+        --stone-400: #b5a99a;
+        --stone-500: #8c7e6f;
+        --stone-600: #6b5f52;
+        --stone-700: #4a4038;
+
+        --font-display: "Outfit", sans-serif;
+        --font-body: "Bricolage Grotesque", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --radius-xl: 20px;
+
+        --shadow-purple: 0 4px 30px rgba(91, 58, 140, 0.2);
+        --shadow-teal: 0 4px 30px rgba(122, 158, 126, 0.2);
+      }
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .animate-up {
+        animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+
+      .delay-1 { animation-delay: 0.1s; }
+      .delay-2 { animation-delay: 0.2s; }
+      .delay-3 { animation-delay: 0.3s; }
+      .delay-4 { animation-delay: 0.45s; }
+      .delay-5 { animation-delay: 0.6s; }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        font-size: 1.05rem;
+        line-height: 1.65;
+        color: var(--stone-700);
+        background-color: var(--cream);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        min-height: 100vh;
+      }
+
+      a {
+        color: var(--purple);
+        text-decoration: none;
+        transition: color 0.25s ease;
+      }
+
+      a:hover {
+        color: var(--purple-deep);
+      }
+
+      ::selection {
+        background-color: var(--purple);
+        color: var(--white);
+      }
+
+      .page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 3rem 1.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bg-grid {
+        position: absolute;
+        inset: 0;
+        opacity: 0.04;
+        background-image:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 40px,
+            var(--stone-400) 40px,
+            var(--stone-400) 41px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 40px,
+            var(--stone-400) 40px,
+            var(--stone-400) 41px
+          );
+        pointer-events: none;
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 640px;
+        width: 100%;
+      }
+
+      .logo {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 2rem;
+      }
+
+      .logo__mark {
+        font-family: var(--font-display);
+        font-size: 4.5rem;
+        font-weight: 800;
+        color: var(--purple);
+        letter-spacing: -0.04em;
+        line-height: 1;
+      }
+
+      .logo__suffix {
+        font-family: var(--font-display);
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: var(--teal);
+        letter-spacing: 0.01em;
+      }
+
+      .intro {
+        font-size: 1.2rem;
+        color: var(--stone-600);
+        margin-bottom: 2.5rem;
+        line-height: 1.7;
+      }
+
+      .brands {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        width: 100%;
+        margin-bottom: 3rem;
+      }
+
+      .brand-card {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        border-radius: var(--radius-xl);
+        background-color: var(--white);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+        text-decoration: none;
+        color: var(--stone-700);
+        text-align: left;
+      }
+
+      a.brand-card:hover {
+        transform: translateY(-4px);
+        color: var(--stone-700);
+      }
+
+      .brand-card--purple:hover {
+        box-shadow: var(--shadow-purple);
+      }
+
+      .brand-card--teal:hover {
+        box-shadow: var(--shadow-teal);
+      }
+
+      .brand-card__accent {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+      }
+
+      .brand-card--purple .brand-card__accent {
+        background: linear-gradient(90deg, var(--purple), var(--purple-bright));
+      }
+
+      .brand-card--teal .brand-card__accent {
+        background: linear-gradient(90deg, var(--teal), var(--teal-bright));
+      }
+
+      .brand-card__name {
+        font-family: var(--font-display);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--ink);
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+      }
+
+      .brand-card__desc {
+        font-size: 0.9rem;
+        color: var(--stone-500);
+        line-height: 1.6;
+        flex: 1;
+      }
+
+      .brand-card__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin-top: 1rem;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--purple);
+        letter-spacing: 0.02em;
+        transition: color 0.25s ease;
+      }
+
+      a.brand-card:hover .brand-card__link {
+        color: var(--purple-deep);
+      }
+
+      .brand-card__link svg {
+        transition: transform 0.25s ease;
+      }
+
+      a.brand-card:hover .brand-card__link svg {
+        transform: translate(2px, -2px);
+      }
+
+      .contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .contact__label {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--stone-400);
+      }
+
+      .contact__email {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--purple);
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.25s ease, color 0.25s ease;
+        padding-bottom: 2px;
+      }
+
+      .contact__email:hover {
+        border-bottom-color: var(--purple);
+        color: var(--purple-deep);
+      }
+
+      .footer {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        font-size: 0.75rem;
+        color: var(--stone-400);
+        font-family: var(--font-mono);
+        letter-spacing: 0.03em;
+      }
+
+      @media (max-width: 560px) {
+        .logo__mark {
+          font-size: 3.2rem;
+        }
+
+        .logo__suffix {
+          font-size: 1.2rem;
+        }
+
+        .intro {
+          font-size: 1.05rem;
+        }
+
+        .brands {
+          grid-template-columns: 1fr;
+        }
+
+        .brand-card {
+          text-align: center;
+        }
+
+        .brand-card__link {
+          justify-content: center;
+        }
+      }
+    </style>
+
+    <Analytics />
+  </body>
+</html>
